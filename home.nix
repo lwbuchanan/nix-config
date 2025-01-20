@@ -36,7 +36,10 @@
 	programs.bash = {
 		enable = true;
 		enableCompletion = true;
-
+		bashrcExtra =
+		''
+			eval "$(zoxide init bash)"
+		'';
 		shellAliases = {
 			ls = "eza --git --icons=auto --group-directories-first";
 			ll = "ls -l";
@@ -45,7 +48,7 @@
 			lar = "ls -laT -L 2";
 
 			v = "nvim";
-			se = "sudoedit";
+			sv = "sudoedit";
 			nf = "fastfetch";
 			cd = "z";
 			grep = "grep --color=auto";

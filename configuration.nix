@@ -81,6 +81,9 @@
     isNormalUser = true;
     description = "Luke";
     extraGroups = [ "networkmanager" "wheel" ];
+    openssh.authorizedKeys.keys = [
+	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcO+GRgvOCNhzPEiC/3FJLZvUMykTbkw3ugC7eHlasP luke@praxis"
+    ];
     packages = with pkgs; [
     #  thunderbird
     ];
