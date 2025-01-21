@@ -17,24 +17,28 @@
 	
 		nixosConfigurations = {
 
-			praxis = nixpkgs.lib.nixosSystem {
-				system = "x86_64-linux";
-				
-				# This allows all input parameters to be used as special arguments in
-				# all submodules. This is needed to use dependencies as module inputs.
-				specialArgs = { inherit inputs; };
-				modules = [
-					# Monolithic config file
-					./configuration.nix
+			praxis = let
+				username = "luke";
+				specialArgs = { inherit username; };
+			in
+				nixpkgs.lib.nixosSystem {
+					inherit specialArgs;
+					system = "x86_64-linux";
 
-					home-manager.nixosModules.home-manager {
-						home-manager.useGlobalPkgs = true;
-						home-manager.useUserPackages = true;
-						home-manager.users.luke = import ./home.nix;
-					}
+					modules = [
+						./hosts/praxis
+						./users/${username}/nixos.nix
 
-				];
-			};
+						home-manager.nixosModules.home-manager {
+							home-manager.useGlobalPkgs = true;
+							home-manager.useUserPackages = true;
+
+							home-manager.extraSpecialArgs = inputs // specialArgs;
+							home-manager.users.${username} = import ./users/${username}/home.nix;
+						}
+
+					];
+				};
 
 		};
 	};
