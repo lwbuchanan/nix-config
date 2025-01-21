@@ -1,9 +1,6 @@
-{ config, pkgs, ...}:
-
 {
-	home.username = "luke";
-	home.homeDirectory = "/home/luke";
-
+	pkgs, ...
+}: {
 	xresources.properties = {
 		"Xcursor.size" = 16;
 		"Xft.dpi" = 144;
@@ -23,13 +20,12 @@
 	];
 
 	# Userspace program configurations (~/.config stuff)
-	programs.git = {
-		enable = true;
-		userName = "Luke Buchanan";
-		userEmail = "luke1020will@gmail.com";
-	};
 
 	programs.kitty = {
+		enable = true;
+	};
+
+	programs.git = {
 		enable = true;
 	};
 
@@ -55,10 +51,4 @@
 		};
 	};
 
-	# Sets the version of home-manager this config is based off of and
-	# compatible with. Avoids breakage due to backwards incompatibility.
-	home.stateVersion = "24.11"; # Don't change this
-
-  # Let home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }

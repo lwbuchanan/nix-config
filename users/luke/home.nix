@@ -3,7 +3,7 @@
 	# Pull in home manager and all needed home modules
 	imports = [
 		../../home/core.nix
-
+		../../home/misc.nix
 	];
 
 	programs.git = {
