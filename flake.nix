@@ -15,7 +15,7 @@
 	
 		nixosConfigurations = {
 
-			praxis = let
+		    praxis = let
 				username = "luke";
 				specialArgs = { inherit username inputs; };
 			in
