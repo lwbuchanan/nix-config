@@ -1,27 +1,7 @@
+{ pkgs, ... }: 
 {
-	pkgs, ...
-}: {
-	#xresources.properties = {
-	#	"Xcursor.size" = 16;
-	#	"Xft.dpi" = 144;
-	#};
-
-	dconf.enable = true;
-  	dconf.settings = {
-       		"org/gnome/mutter" = { 
-			edge-tiling = true; 
-			experimental-features = [ 
-				"scale-monitor-framebuffer"
-				"xwayland-native-scaling" 
-			];
-		};
-    		"org/gnome/desktop/interface" = {
-      			color-scheme = "prefer-dark";
-			enable-hot-corners = false;
-			scaling-factor = 1.5;
-    		};
-  	};
-
+	# Install all packages needed by the user (unless they are installed to the
+	# system or need to be enabled as a program for further configuration).
 	home.packages = with pkgs; [
 		ranger
 		zip
@@ -51,11 +31,13 @@
 	programs.foot = {
 		enable = true;
 	};
-
+	
+	# Need to enable git so it can utilize the user's configuration
 	programs.git = {
 		enable = true;
 	};
 
+	# Similar to .bashrc
 	programs.bash = {
 		enable = true;
 		enableCompletion = true;
@@ -78,5 +60,4 @@
 			renix = "sudo nixos-rebuild switch --flake ~/nix-config";
 		};
 	};
-
 }

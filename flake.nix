@@ -17,7 +17,7 @@
 
 			praxis = let
 				username = "luke";
-				specialArgs = { inherit username; };
+				specialArgs = { inherit username inputs; };
 			in
 				nixpkgs.lib.nixosSystem {
 					inherit specialArgs;
@@ -31,7 +31,7 @@
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
 
-							home-manager.extraSpecialArgs = inputs // specialArgs;
+							home-manager.extraSpecialArgs = specialArgs;
 							home-manager.users.${username} = import ./users/${username}/home.nix;
 						}
 
