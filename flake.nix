@@ -1,16 +1,14 @@
 {
-	description = "My NixOS config flake";
+	description = "My NixOS config flake with module for home-manager and nixvim";
 
 	inputs = {
-		# Upstream package source for nixpkgs (version 24.11).
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-		home-manager = {
-			url = "github:nix-community/home-manager/release-24.11";
+		home-manager.url = "github:nix-community/home-manager/release-24.11";
+		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-			# Ensures version match with nixpkgs in this flake
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		nixvim.url = "github:nix-community/nixvim/nixos-24.11";
+		nixvim.inputs.nixpkgs.follows = "nixpkgs";
 	};
 
 	outputs = { self, nixpkgs, home-manager, ... }@inputs: {

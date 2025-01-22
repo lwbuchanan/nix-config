@@ -1,13 +1,28 @@
 {
 	pkgs, ...
 }: {
-	xresources.properties = {
-		"Xcursor.size" = 16;
-		"Xft.dpi" = 144;
-	};
+	#xresources.properties = {
+	#	"Xcursor.size" = 16;
+	#	"Xft.dpi" = 144;
+	#};
+
+	dconf.enable = true;
+  	dconf.settings = {
+       		"org/gnome/mutter" = { 
+			edge-tiling = true; 
+			experimental-features = [ 
+				"scale-monitor-framebuffer"
+				"xwayland-native-scaling" 
+			];
+		};
+    		"org/gnome/desktop/interface" = {
+      			color-scheme = "prefer-dark";
+			enable-hot-corners = false;
+			scaling-factor = 1.5;
+    		};
+  	};
 
 	home.packages = with pkgs; [
-		# User-level utilities
 		ranger
 		zip
 		unzip
@@ -17,11 +32,23 @@
 		fzf
 		fastfetch
 		btop
+
+		xournalpp
+		discord
+		jetbrains.idea-ultimate
+
+		typst
+		plantuml
+		zathura
 	];
 
 	# Userspace program configurations (~/.config stuff)
 
 	programs.kitty = {
+		enable = true;
+	};
+
+	programs.foot = {
 		enable = true;
 	};
 
@@ -48,6 +75,7 @@
 			nf = "fastfetch";
 			cd = "z";
 			grep = "grep --color=auto";
+			renix = "sudo nixos-rebuild switch --flake ~/nix-config";
 		};
 	};
 

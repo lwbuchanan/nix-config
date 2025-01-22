@@ -6,6 +6,9 @@
     [ 
       ../../modules/system.nix
       ../../modules/gnome.nix
+      ../../modules/hyprland.nix
+      ../../modules/fonts.nix
+
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];

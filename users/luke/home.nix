@@ -4,6 +4,7 @@
 	imports = [
 		../../home/core.nix
 		../../home/misc.nix
+		../../home/hyprland
 	];
 
 	programs.git = {
