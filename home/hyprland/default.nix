@@ -1,5 +1,10 @@
 {pkgs, config, ...} :
 {
-	wayland.windowManager.hyprland.enable = true; # enable Hyprland
+	wayland.windowManager.hyprland = {
+		enable = true;
+		settings = {};
+
+
+	};
 
 }

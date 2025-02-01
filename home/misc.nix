@@ -20,6 +20,11 @@
 		typst
 		plantuml
 		zathura
+		graphviz
+
+		duckstation
+		musescore
+		qbittorrent
 	];
 
 	# Userspace program configurations (~/.config stuff)

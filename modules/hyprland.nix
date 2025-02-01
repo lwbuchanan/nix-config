@@ -10,9 +10,9 @@
 	};
 	
 	# Stuff needed for hyprland to work regardless of user config
-	environment.systemPackages = with pkgs; [ 
-		kitty
-		waybar
-		wofi
-	];
+	#environment.systemPackages = with pkgs; [ 
+	#	kitty
+	#	waybar
+	#	wofi
+	#];
 }

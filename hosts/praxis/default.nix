@@ -9,6 +9,8 @@
 		../../modules/gnome.nix
 		../../modules/hyprland.nix
 		../../modules/fonts.nix
+		../../modules/nvidia.nix
+		../../modules/steam.nix
 
 
 		# Include the results of the hardware scan.
@@ -26,6 +28,14 @@
 			useOSProber = true;
 			devices = [ "nodev" ];
 		};
+	};
+  
+
+	hardware.nvidia.prime = {
+		offload.enable = true;
+		offload.enableOffloadCmd = true;
+		intelBusId = "PCI:0:2:0";
+		nvidiaBusId = "PCI:1:0:0";
 	};
 
   	networking.hostName = "praxis"; # Define your hostname.

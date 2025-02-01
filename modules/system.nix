@@ -63,10 +63,11 @@
 	# Unconfigured editors, essential cli tools, stuff you would expect 
 	# to find in an unconfigured distro.
 	environment.systemPackages = with pkgs; [
-		git
-		vim 
-		wget
-		alacritty
+	  git
+	  vim 
+	  wget
+	  alacritty
+	  lshw
 	];
 
 	# System services
